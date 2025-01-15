@@ -2,10 +2,13 @@
     <div class="left">
         <div>
             <h1>Login</h1>
-            <input type="text" name="username" placeholder="username">
-            <input type="password" name="password" placeholder="password" id="">
+            <form action=""(ngSubmit)="login()">
+                <input type="text" [(ngModel)]="credentials.username" name="username" placeholder="username">
+                <input type="password" [(ngModel)]="credentials.password" name="password" placeholder="password" id="">
 
             <button type="submit">Login</button>
+            </form>
+            
         </div>
     </div>
     <div class="right">
