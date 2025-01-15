@@ -22,7 +22,7 @@ export class LoginComponent {
       next: (response) => {
           console.log('Token recebido:', response.token);
           localStorage.setItem('token', response.token)
-          this.router.navigate(['/home']); // Redireciona para a página principal após o login
+          this.router.navigate(['/app']); // Redireciona para a página principal após o login
        
       },
       error: (err) => {

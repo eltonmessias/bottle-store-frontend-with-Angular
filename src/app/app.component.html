@@ -1,3 +1,19 @@
-
+<div *ngIf="!isLoginPage()">
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo"><h1>Big Brogther</h1></div>
+      <ul>
+        <li><a routerLink="/home" routerLinkActive="active">Inicio</a></li>
+        <li><a routerLink="/reports" routerLinkActive="active">Reports</a></li>
+        <li><a routerLink="/inventory" routerLinkActive="active">Inventory</a></li>
+        <li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
+        <li><a routerLink="/home" routerLinkActive="active"></a>Home</li>
+      </ul>
+    </aside>
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
 
 <router-outlet />
