@@ -3,11 +3,11 @@
     <aside class="sidebar">
       <div class="logo"><h1>Big Brogther</h1></div>
       <ul>
-        <li><a routerLink="/home" routerLinkActive="active">Inicio</a></li>
-        <li><a routerLink="/reports" routerLinkActive="active">Reports</a></li>
-        <li><a routerLink="/inventory" routerLinkActive="active">Inventory</a></li>
-        <li><a routerLink="/dashboard" routerLinkActive="active">Dashboard</a></li>
-        <li><a routerLink="/home" routerLinkActive="active"></a>Home</li>
+        <li routerLinkActive="active"><a routerLink="/home" >Inicio</a></li>
+        <li routerLinkActive="active"  [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/reports" >Reports</a></li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/inventory" >Inventory</a></li>
+        <li routerLinkActive="active"><a routerLink="/dashboard" >Dashboard</a></li>
+        <li routerLinkActive="active"><a routerLink="/home"></a>Home</li>
       </ul>
     </aside>
     <main class="content">
@@ -16,4 +16,3 @@
   </div>
 </div>
 
-<router-outlet />
