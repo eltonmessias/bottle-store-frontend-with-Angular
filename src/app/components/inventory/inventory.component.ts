@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { ProductsComponent } from "../../shared/products/products.component";
 
 @Component({
   selector: 'app-inventory',
   standalone: true,
-  imports: [],
+  imports: [ProductsComponent],
   templateUrl: './inventory.component.html',
   styleUrl: './inventory.component.scss'
 })
