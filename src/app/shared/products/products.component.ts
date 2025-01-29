@@ -23,4 +23,22 @@ export class ProductsComponent {
     { id: 3, name: 'Produto C', category: 'Categoria 1', price: 300.0, quantity: 100 },
     { id: 4, name: 'Produto D', category: 'Categoria 3', price: 400.0, quantity: 100 },
   ];
+
+  selectedRow: any = null;
+
+  onCellClick(product: any): void {
+    this.selectedRow = product;
+  }
+
+  clearSelection(): void {
+    this.selectedRow = null;
+  }
+
+  editProduct(): void {
+    console.log('Editar Produto:', this.selectedRow);
+  }
+
+  increaseStock(): void {
+    console.log('Aumentar Stock:', this.selectedRow);
+  }
 }
