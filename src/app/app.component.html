@@ -10,9 +10,13 @@
         <li routerLinkActive="active"><a routerLink="/home"></a>Home</li>
       </ul>
     </aside>
-    <main class="content">
+    <main  class="content">
       <router-outlet></router-outlet>
     </main>
   </div>
+</div>
+
+<div *ngIf="isLoginPage()">
+  <router-outlet></router-outlet>
 </div>
 

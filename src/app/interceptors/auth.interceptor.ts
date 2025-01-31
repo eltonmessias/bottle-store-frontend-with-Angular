@@ -1,29 +1,32 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpInterceptorFn, HttpRequest } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { HttpEvent, HttpHandler, HttpInterceptorFn, HttpRequest } from '@angular/common/http';
+import { inject } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { AuthService } from '../services/auth.service';
-
-
+import { Router } from '@angular/router';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
+  const router = inject(Router);
   const token = authService.getToken();
-  // const token = 'eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiQURNSU4iLCJzdWIiOiJlbHRvbm1lc3NpYXMiLCJpYXQiOjE3MzY4MDIyMzcsImV4cCI6MTczNjgwNzYzN30.j11AhNau6cCYdKMKw6hggQLHBvYuiH2cDepw-Yz7X6U';
- 
-
   
-  if(token) {
+
+  if (token) {
     req = req.clone({
       setHeaders: {
         Authorization: `Bearer ${token}`,
       }
-    })
-    return next(req);
+    });
   }
+
   return next(req).pipe(
     catchError((error) => {
-      console.error("Erro na requisicao", error);
-      return throwError(() => error)
+      console.error("Erro na requisição:", error);
+
+      if(error.status === 401) {
+        authService.logout();
+        router.navigate(['/login'])
+      }
+      return throwError(() => error);
     })
   );
 };

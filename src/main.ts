@@ -8,14 +8,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { importProvidersFrom } from '@angular/core';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { authInterceptor } from './app/interceptors/auth.interceptor';
 
-bootstrapApplication(AppComponent, {
-  providers: [
-    provideRouter(routes, withDebugTracing(), withComponentInputBinding()),  importProvidersFrom(
-      BrowserAnimationsModule,
-      MatTableModule,
-      MatButtonModule
-    )
-  ],
-})
+bootstrapApplication(AppComponent, appConfig)
   .catch((err) => console.error(err));

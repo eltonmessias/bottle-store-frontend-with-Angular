@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
+import { Product } from '../../models/product';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-products',
@@ -13,17 +15,25 @@ import { MatTableModule } from '@angular/material/table';
 })
 export class ProductsComponent {
   displayedColumns: string[] = ['id', 'name', 'price', 'category', 'quantity'];
-  products = [
-    { id: 1, Name: 'Produto A', category: 'Categoria 1', price: 100.0,  quantity: 100 },
-    { id: 2, name: 'Produto B', category: 'Categoria 2', price: 200.0,  quantity: 100 },
-    { id: 3, name: 'Produto C', category: 'Categoria 1', price: 300.0, quantity: 100 },
-    { id: 4, name: 'Produto D', category: 'Categoria 3', price: 400.0, quantity: 100 },
-    { id: 1, Name: 'Produto A', category: 'Categoria 1', price: 100.0,  quantity: 100 },
-    { id: 2, name: 'Produto B', category: 'Categoria 2', price: 200.0,  quantity: 100 },
-    { id: 3, name: 'Produto C', category: 'Categoria 1', price: 300.0, quantity: 100 },
-    { id: 4, name: 'Produto D', category: 'Categoria 3', price: 400.0, quantity: 100 },
-  ];
+  products: Product[] = [];
 
+  constructor(private productService: ProductService){}
+
+    ngOnInit(): void {
+      this.loadProducts();
+    }
+
+    loadProducts(): void {
+      this.productService.getAllProducts().subscribe({
+        next: (data) => {
+          this.products = data;
+          console.log(data)
+        },
+        error: (err) => {
+          console.log('Erro ao buscar os produtos')
+        }
+      })
+    }
   selectedRow: any = null;
 
   onCellClick(product: any): void {
