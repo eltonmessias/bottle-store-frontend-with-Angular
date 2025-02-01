@@ -14,7 +14,7 @@ import { ProductService } from '../../services/product.service';
   encapsulation: ViewEncapsulation.None
 })
 export class ProductsComponent {
-  displayedColumns: string[] = ['id', 'name', 'price', 'category', 'quantity'];
+  displayedColumns: string[] = ['id', 'name', 'sellPrice', 'buyPrice', 'category', 'quantity'];
   products: Product[] = [];
 
   constructor(private productService: ProductService){}

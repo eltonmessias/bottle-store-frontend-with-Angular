@@ -8,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 
+import { MatDialogModule } from '@angular/material/dialog';
+
 export const appConfig: ApplicationConfig = {
   // providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes, withDebugTracing(), withComponentInputBinding()), provideHttpClient(withInterceptors([authInterceptor]))]
   providers: [
@@ -17,6 +19,7 @@ export const appConfig: ApplicationConfig = {
     BrowserAnimationsModule,
     MatTableModule,
     MatButtonModule
-  )
+  ),
+  importProvidersFrom(MatButtonModule)
 ],
 };
