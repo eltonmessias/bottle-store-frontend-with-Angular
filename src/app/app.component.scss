@@ -57,6 +57,34 @@
       }
       
     }
+
+    .logout-btn {
+      width: 100px;
+      height: 30px;
+      position: relative;
+      bottom: -180px;
+      background: #ff0000c6;
+      border: none;
+      border-radius: 7px;
+      align-self: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      color: #FFF;
+      cursor: pointer;
+
+      span {
+        font-size: 14px;
+        font-weight: 600;
+      }
+      
+
+      img {
+        width: 30px;
+        height: 20px;
+      }
+    }
   }
 
   .content {

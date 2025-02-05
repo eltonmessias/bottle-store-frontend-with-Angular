@@ -21,9 +21,10 @@ export class LoginComponent {
   login(): void {
     this.authService.login(this.credentials).subscribe({
       next: (response) => {
-          console.log('Token recebido:', response.token);
-          localStorage.setItem('token', response.token)
-          this.router.navigate(['/app']); // Redireciona para a página principal após o login
+          console.log('Token recebido:', response.accessToken);
+          localStorage.setItem('accessToken', response.accessToken)
+          this.router.navigate(['/home']);
+          // this.router.navigate(['/app']); // Redireciona para a página principal após o login
        
       },
       error: (err) => {

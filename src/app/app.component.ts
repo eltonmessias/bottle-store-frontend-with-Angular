@@ -3,6 +3,7 @@ import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { LoginComponent } from "./components/login/login.component";
 import { CommonModule } from '@angular/common';
 import { InventoryComponent } from './components/inventory/inventory.component';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +13,15 @@ import { InventoryComponent } from './components/inventory/inventory.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  constructor(private router: Router){}
+
+  constructor(private router: Router, private authService:AuthService){}
   title = 'bottleStore';
 
   isLoginPage(): boolean {
     return this.router.url === '/login';
+  }
+
+  logout() {
+    this.authService.logout()
   }
 }
