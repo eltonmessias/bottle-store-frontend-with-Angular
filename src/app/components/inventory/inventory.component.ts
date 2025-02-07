@@ -36,7 +36,6 @@ export class InventoryComponent implements OnInit{
     const dialogRef = this.dialog.open(ProductFormComponent, {
       width: '679px',
       height: '531px',
-      position: { top: '-90vh', left: '200px'},
       panelClass: 'product-form-container',
       disableClose: true
     });

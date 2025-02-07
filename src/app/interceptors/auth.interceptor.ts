@@ -8,7 +8,6 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
   const router = inject(Router);
   const token = authService.getToken();
-  
 
   if (token) {
     req = req.clone({
@@ -20,22 +19,22 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(req).pipe(
     catchError(error => {
-
-      // if (error.status === 401) {
-      //   return authService.refreshToken().pipe(
-      //     switchMap(() => {
-      //       // Após renovar, refaz a requisição com o novo token
-      //       const newToken = authService.getToken();
-      //       const newRequest = req.clone({setHeaders: { Authorization: `Bearer ${newToken}` }});
-      //       return next(newRequest);
-      //     }),
-      //     catchError(refreshError => {
-      //       authService.logout();
-      //       router.navigate(['/login']);
-      //       return throwError(() => refreshError);
-      //     })
-      //   );
-      // }
+      if (error.status === 401) {
+        return authService.refreshToken().pipe(
+          switchMap((tokens) => {
+            // O próprio método refreshToken() retorna os tokens atualizados
+            const newRequest = req.clone({
+              setHeaders: { Authorization: `Bearer ${tokens.accessToken}` }
+            });
+            return next(newRequest);
+          }),
+          catchError(refreshError => {
+            authService.logout();
+            router.navigate(['/login']);
+            return throwError(() => refreshError);
+          })
+        );
+      }
       return throwError(() => error);
     })
   );

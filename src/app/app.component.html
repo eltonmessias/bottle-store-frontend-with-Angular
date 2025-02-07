@@ -1,22 +1,6 @@
 <div class="container">
-  <aside class="sidebar" *ngIf="!isLoginPage()">
-    <div class="logo">
-      <h1>Big Brother</h1>
-    </div>
-    <ul>
-      <li><a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
-      <li><a routerLink="/reports" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Reports</a></li>
-      <li><a routerLink="/inventory" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inventory</a></li>
-      <li><a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a></li>
-    </ul>
-    <button class="logout-btn" (click)="logout()">
-      <span>Logout</span>
-      <img src="https://cdn-icons-png.flaticon.com/128/3889/3889524.png" alt="logout">
-    </button>
-  </aside>
+  <app-left-sidebar/>
   
   <!-- Conteúdo principal, com um único router-outlet -->
-  <main class="content">
-    <router-outlet></router-outlet>
-  </main>
+  <app-main/>
 </div>

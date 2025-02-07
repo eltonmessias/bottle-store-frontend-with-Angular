@@ -1,0 +1,57 @@
+<!-- <aside class="sidebar" *ngIf="!isLoginPage()">
+    <div class="logo">
+      <img src="assets/logoo.png" alt="Logo">
+    </div>
+    <ul class="sidenav-nav">
+      @for (item of items; track $index) {
+        <li ><a routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="item.RouterLink" >
+          <i class="sidenav-link-icon" [class]="item.icon"></i>
+          <span class="sidenav-link-text">{{item.label}}</span>
+          </a></li>
+      }
+      <li ><a routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="/home" >Home</a></li>
+      <li ><a routerLink="/reports" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Reports</a></li>
+      <li><a routerLink="/inventory" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inventory</a></li>
+      <li><a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a></li>
+    </ul>
+    <button class="logout-btn" (click)="logout()">
+      <span>Logout</span>
+      <img src="https://cdn-icons-png.flaticon.com/128/3889/3889524.png" alt="logout">
+    </button>
+  </aside> -->
+
+  <div class="sidenav" *ngIf="!isLoginPage()">
+  <div class="logo-container">
+    <button class="logo">
+      <i class="fal fa-bars"></i>
+    </button>
+     
+      <div class="logo-text">Big<br>Brother</div>
+      <!-- <button class="btn-close" >
+        <i class="fal fa-times close-icon"></i>
+      </button> -->
+    
+  </div>
+  <div class="sidenav-nav">
+    @for (item of items; track $index) {
+      <li class="sidenav-nav-item">
+        <a
+          class="sidenav-nav-link"
+          [routerLink]="item.RouterLink"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <i class="sidenav-link-icon" [class]="item.icon"></i>
+          <!-- @if (!isLeftSidebarCollapsed()) { -->
+            <span class="sidenav-link-text">{{ item.label }}</span>
+          <!-- } -->
+        </a>
+      </li>
+    }
+  </div>
+
+  <button class="logout-btn" (click)="logout()">
+    <span>Logout</span>
+    <img src="https://cdn-icons-png.flaticon.com/128/3889/3889524.png" alt="logout">
+  </button>
+</div>

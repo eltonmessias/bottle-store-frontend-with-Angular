@@ -23,7 +23,7 @@ export class LoginComponent {
       next: (response) => {
           console.log('Token recebido:', response.accessToken);
           localStorage.setItem('accessToken', response.accessToken)
-          this.router.navigate(['/home']);
+          this.router.navigate(['/dashboard']);
           // this.router.navigate(['/app']); // Redireciona para a página principal após o login
        
       },
