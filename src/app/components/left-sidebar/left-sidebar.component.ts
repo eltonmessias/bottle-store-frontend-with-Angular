@@ -26,6 +26,11 @@ export class LeftSidebarComponent {
       label: 'Inventory'
     },
     {
+      RouterLink: 'sales',
+      icon: 'fal fa-chart-line',
+      label: 'Sales'
+    },
+    {
       RouterLink: 'reports',
       icon: 'fal fa-file',
       label: 'Reports'

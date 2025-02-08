@@ -8,6 +8,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UsersComponent } from './components/users/users.component';
 import { ClientsComponent } from './components/clients/clients.component';
 import { AuthGuard } from './guards/auth.guard';
+import { SalesComponent } from './components/sales/sales.component';
 
 export const routes: Routes = [
     {path:'', redirectTo:'/dashboard', pathMatch:'full'},
@@ -16,5 +17,6 @@ export const routes: Routes = [
     {path: 'reports', component:ReportsComponent, canActivate: [AuthGuard]},
     {path: 'dashboard', component:DashboardComponent, canActivate: [AuthGuard]},
     {path: 'users', component:UsersComponent, canActivate: [AuthGuard]},
-    {path: 'clients', component:ClientsComponent, canActivate: [AuthGuard]}
+    {path: 'clients', component:ClientsComponent, canActivate: [AuthGuard]},
+    {path: 'sales', component:SalesComponent, canActivate: [AuthGuard]}
 ];
