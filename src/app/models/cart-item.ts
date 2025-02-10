@@ -2,6 +2,6 @@ export interface CartItem {
 
     product: string;
     quantity: number;
-    unitPrice: number;
+    sellPrice: number;
     subtotal: number;
 }
