@@ -16,27 +16,27 @@
     </header>
 
     <div class="cart-section">
-        <div class="cart-container">
+        <div class="search-container">
             <!-- Pesquisa por produto -->
             <div class="product-search">
                 <input 
-                    type="text" 
-                    
-                    [value]="searchQuery()"
-                    (input)="searchQuery()" 
-                    (focus)="onFocus()"
-                    (blur)="onBlur()"
-                    placeholder="Pesquisar produto..."
+                type="text" 
+                [ngModel]="searchQuery()" 
+                (ngModelChange)="searchQuery.set($event)" 
+                (focus)="onFocus()" 
+                (blur)="onBlur()" 
+                placeholder="Pesquisar produto..."
                 />
               
-                <div class="dropdown" *ngIf="showDropdown() && filteredProducts.length > 0">
+                <div class="dropdown" *ngIf="showDropdown() && filterProducts().length > 0">
                     <ul>
-                        <li *ngFor="let product of filteredProducts" (mousedown)="addToCart(product)">
+                        <li *ngFor="let product of filterProducts()" (mousedown)="addToCart(product)">
                             {{ product.name }}
                         </li>
                     </ul>
-                    <p *ngIf="filteredProducts.length === 0">Nenhum produto encontrado</p>
+                    
                 </div>
+                <p *ngIf="showDropdown() && filterProducts().length === 0">Nenhum produto encontrado</p>
             </div>
         </div>
 
@@ -52,11 +52,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of cartItems()">
+                    <tr *ngFor="let item of cartItems(); let i = index">
                         <td class="product-name">{{ item.product }}</td>
-                        <td>{{ item.quantity}}</td>
-                        <td>{{ item.sellPrice | currency }}</td>
-                        <td>{{ item.subtotal | currency }}</td>
+                        <td class="quantity-cell">
+                            <button class="qty-btn" (click)="decreaseQuantity(i)">-</button>
+                            <input type="number" [(ngModel)]="item.quantity" (change)="updateQuantity(i)" />
+                            <button class="qty-btn" (click)="increaseQuantity(i)">+</button>
+                        </td>
+                        <td>{{ item.sellPrice | currency: 'MZN' }}</td>
+                        <td>{{ item.subtotal | currency: 'MZN' }}</td>
                         <td>
                             <button class="remove-btn" (click)="removeItem(item)">Remover</button>
                         </td>
@@ -65,7 +69,7 @@
             </table>
           
             <div class="total">
-                <h3>Total: {{ totalAmount() | currency }}</h3>
+                <h3>Total: {{ totalAmount() | currency : 'MZN' }}</h3>
             </div>
         </div>
     </div>

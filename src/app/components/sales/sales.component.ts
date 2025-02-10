@@ -64,10 +64,10 @@ export class SalesComponent {
   // }
   filterProducts = computed(() => 
     this.searchQuery().trim() === ''
-    ? []
-    : this.allProducts.filter(product => 
-      product.name.toLowerCase().includes(this.searchQuery().toLowerCase())
-    )
+    ? this.allProducts
+    : this.allProducts.filter(product =>
+        product.name.toLowerCase().includes(this.searchQuery().toLowerCase())
+      )
   )
 
   // Função para adicionar produto ao carrinho
@@ -126,4 +126,33 @@ export class SalesComponent {
     setTimeout(() => this.showDropdown.set(false), 200);  // Espera um tempo para o clique
   }
 
+
+  increaseQuantity(index: number){
+    this.cartItems()[index].quantity += 1
+    this.updateSubtotal(index)
+  }
+  decreaseQuantity(index:number) {
+    if (this.cartItems()[index].quantity > 1) {
+      this.cartItems()[index].quantity -= 1;
+      this.updateSubtotal(index);
+    }
+  }
+
+  updateQuantity(index:number) {
+    if (this.cartItems()[index].quantity < 1) {
+      this.cartItems()[index].quantity = 1; // Evita valores negativos ou zero
+    }
+    this.updateSubtotal(index);
+  }
+
+  updateSubtotal(index: number) {
+    this.cartItems.update(cart => {
+      const updatedCart = [...cart];
+      updatedCart[index] = {
+        ...updatedCart[index],
+        subtotal: updatedCart[index].quantity * updatedCart[index].sellPrice
+      };
+      return updatedCart;
+    });
+  }
 }
