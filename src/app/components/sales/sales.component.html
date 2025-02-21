@@ -4,7 +4,7 @@
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 0C8.7 0 6 3.36 6 7.5C6 11.64 8.7 15 12 15C15.3 15 18 11.64 18 7.5C18 3.36 15.3 0 12 0ZM5.73 15C2.55 15.15 0 17.76 0 21V24H24V21C24 17.76 21.48 15.15 18.27 15C16.65 16.83 14.43 18 12 18C9.57 18 7.35 16.83 5.73 15Z" fill="white"/>
             </svg>  
-            <span class="username">Benedito</span>  
+            <span class="username">{{  username }}</span>  
         </div>
 
         <div class="lista-vendas-btn">
@@ -16,61 +16,105 @@
     </header>
 
     <div class="cart-section">
-        <div class="search-container">
-            <!-- Pesquisa por produto -->
-            <div class="product-search">
-                <input 
-                type="text" 
-                [ngModel]="searchQuery()" 
-                (ngModelChange)="searchQuery.set($event)" 
-                (focus)="onFocus()" 
-                (blur)="onBlur()" 
-                placeholder="Pesquisar produto..."
-                />
-              
-                <div class="dropdown" *ngIf="showDropdown() && filterProducts().length > 0">
-                    <ul>
-                        <li *ngFor="let product of filterProducts()" (mousedown)="addToCart(product)">
-                            {{ product.name }}
-                        </li>
-                    </ul>
-                    
+        <div class="cart-search-area">
+            <div class="search-container">
+                <!-- Pesquisa por produto -->
+                <div class="product-search">
+                    <input 
+                    type="text" 
+                    [ngModel]="searchQuery()" 
+                    (ngModelChange)="searchQuery.set($event)" 
+                    (focus)="onFocus()" 
+                    (blur)="onBlur()" 
+                    placeholder="Pesquisar produto..."
+                    />
+                  
+                    <div class="dropdown" *ngIf="showDropdown() && filterProducts().length > 0">
+                        <ul>
+                            <li *ngFor="let product of filterProducts()" (mousedown)="addToCart(product)">
+                                {{ product.name }}
+                            </li>
+                        </ul>
+                        
+                    </div>
+                    <p *ngIf="showDropdown() && filterProducts().length === 0">Nenhum produto encontrado</p>
                 </div>
-                <p *ngIf="showDropdown() && filterProducts().length === 0">Nenhum produto encontrado</p>
+            </div>
+    
+            <div class="cart-container">
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Quantidade</th>
+                            <th>Preço Unitário</th>
+                            <th>Subtotal</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of cartItems(); let i = index">
+                            <td class="product-name">{{ item.product }}</td>
+                            <td class="quantity-cell">
+                                <button class="qty-btn" (click)="decreaseQuantity(i)">-</button>
+                                <input type="number" [(ngModel)]="item.quantity" (change)="updateQuantity(i)" />
+                                <button class="qty-btn" (click)="increaseQuantity(i)">+</button>
+                            </td>
+                            <td>{{ item.sellPrice | currency: 'MZN' }}</td>
+                            <td>{{ item.subtotal | currency: 'MZN' }}</td>
+                            <td>
+                                <button class="remove-btn" (click)="removeItem(item)">Remover</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+    
+                
+              
+                
             </div>
         </div>
 
-        <div class="cart-container">
-            <table class="cart-table">
-                <thead>
-                    <tr>
-                        <th>Produto</th>
-                        <th>Quantidade</th>
-                        <th>Preço Unitário</th>
-                        <th>Subtotal</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let item of cartItems(); let i = index">
-                        <td class="product-name">{{ item.product }}</td>
-                        <td class="quantity-cell">
-                            <button class="qty-btn" (click)="decreaseQuantity(i)">-</button>
-                            <input type="number" [(ngModel)]="item.quantity" (change)="updateQuantity(i)" />
-                            <button class="qty-btn" (click)="increaseQuantity(i)">+</button>
-                        </td>
-                        <td>{{ item.sellPrice | currency: 'MZN' }}</td>
-                        <td>{{ item.subtotal | currency: 'MZN' }}</td>
-                        <td>
-                            <button class="remove-btn" (click)="removeItem(item)">Remover</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-          
+        <div class="payment-section">
+            <h1>Pagamento</h1>
             <div class="total">
-                <h3>Total: {{ totalAmount() | currency : 'MZN' }}</h3>
+                <span>TOTAL MZN:</span>
+                <h2>{{ totalAmount() | currency: 'MZN' }}</h2>
+                <p>Qtd de produtos: 4</p>
             </div>
+    
+            <div class="payment-options">
+                <h3>Formas de Pagamento</h3>
+          
+                    <div class="payment-option" *ngFor="let option of paymentOptions">
+                      <label for="{{option.type}}">{{ option.label }}</label>
+                      <input 
+                        id="{{option.type}}"
+                        type="number" 
+                        [value]="getPaymentAmount(option.type)" 
+                        (input)="updatePayment(option.type, $any($event.target).value)" 
+                        placeholder="Valor para {{ option.label }}"
+                      />
+                    </div>
+      
+              
+                <div class="total-payment">
+                  <p>Total Pago: {{ totalPayment() | currency }}</p>
+                </div>
+
+                <div class="change">
+                    <p>Troco: {{ changeAmount() | currency }}</p>
+                </div>
+              
+                <button (click)="confirmPayment()">Confirmar Pagamento</button>
+              </div>
         </div>
+
+
+        
+
+        
     </div>
+
+    
 </div>

@@ -37,7 +37,7 @@ export class ProductFormComponent {
       name: ['', Validators.required],
       categoryId: [null, Validators.required],
       buyPrice: ['', [Validators.required, Validators.min(1)]],  // Separado corretamente
-      sellPrice: ['', [Validators.required, Validators.min(1)]], // Separado corretamente
+      sellingPrice: ['', [Validators.required, Validators.min(1)]], // Separado corretamente
       quantity: ['', [Validators.required, Validators.min(1)]]
     });
   }

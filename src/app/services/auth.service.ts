@@ -7,7 +7,7 @@ import { catchError, map, Observable, tap, throwError } from 'rxjs'; // Adicione
   providedIn: 'root',
 })
 export class AuthService {
-  private url = 'http://localhost:8080/auth';
+  private url = 'http://localhost:8080/bigbrother/api/auth';
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -67,5 +67,9 @@ export class AuthService {
     this.router.navigate(['/login']).then(() => {
       window.location.reload();
     });
+  }
+
+  getUsername(): Observable<{ username: string}> {
+    return this.http.get<{username: string}>(`${this.url}/username`);
   }
 }

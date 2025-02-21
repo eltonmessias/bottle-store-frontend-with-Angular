@@ -1,7 +1,8 @@
 export interface Product {
     id: number;
     name: string;
-    sellPrice: number;
+    sellingPrice: number;
+    purchasePrice: number;
     category: string;
-    quantity: number;
+    stockQuantity: number;
 }
