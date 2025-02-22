@@ -1,4 +1,4 @@
 export interface PaymentMethod {
-    type: 'dinheiro' | 'cartao' | 'm-pesa' | 'e-mola';
+    type: string;
     amount: number;
 }
