@@ -1,7 +1,9 @@
 import { CartItem } from "./cart-item";
 import { PaymentMethod } from "./payment-method";
 
-export interface sale {
+export interface Sale {
     saleItems: CartItem[],
-    payments: PaymentMethod[]
+    payments: PaymentMethod[],
+    saleDate: Date;
+    totalAmount: number
 }

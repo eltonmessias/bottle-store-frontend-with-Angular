@@ -1,0 +1,42 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  h2 {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 41px;
+    padding: 10px 30px;
+    
+    outline: none;
+
+    input {
+        outline: none;
+    }
+
+    label {
+        font-size: 16px;
+        font-weight: 400;
+        color: #FFF;
+        margin-right: 20px;
+    }
+    
+    .name-area{
+
+        input {
+            width: 156px;
+            
+        }
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+    }
+  }

@@ -1,0 +1,47 @@
+<h2> Product Registration </h2>
+
+<form [formGroup]="productForm" (ngSubmit)="save()">
+  
+  <div class="category-area form-item">
+      <label>Categoria:</label>
+      
+      <select formControlName="categoryId">
+        <option value="" disabled selected>---Select Category---</option>
+        <option value="cerveja" *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+      </select>
+      <button class="new-category-btn" (click)="openCreateCategoryDialog()">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M417-417H166v-126h251v-251h126v251h251v126H543v251H417v-251Z"/></svg>
+        </button>
+  </div>
+
+  <div class="name-area form-item">
+      <label>Nome:</label>
+      <input type="text" formControlName="name" required />
+  </div>
+
+  <div class="prices-area form-item">
+      <div class="price-area buy-price-area">
+          <label>Preço de Compra:</label>
+          <input type="number" formControlName="buyPrice" required />
+      </div>
+    
+      <div class="price-area sell-price-area">
+        <label>Preço de Venda:</label>
+        <input type="number" formControlName="sellingPrice" required />
+      </div>
+  </div>
+
+  <div class="quantity-area form-item">
+      <label>Quantidade:</label>
+      <input type="number" formControlName="quantity" required /> 
+  </div>
+
+  <div class="buttons">
+    <button type="button" class="cancel-button" (click)="close()">Cancelar</button>
+    <button type="submit" class="save-button" [disabled]="loading">
+      <span *ngIf="loading" class="spinner"><mat-spinner></mat-spinner></span>
+      <span *ngIf="!loading">Salvar</span>
+    </button>
+  </div>
+
+</form>

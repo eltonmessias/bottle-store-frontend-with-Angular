@@ -2,6 +2,8 @@
 
 @include mat.core();
 
+$primary-color: #012a5b;
+
 $meu-tema: mat.define-light-theme((
   color: (
     primary: mat.define-palette(mat.$blue-grey-palette),

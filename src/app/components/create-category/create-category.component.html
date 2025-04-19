@@ -1,0 +1,21 @@
+<h2> New Category </h2>
+
+<form [formGroup]="categoryForm" (ngSubmit)="save()">
+
+  <div class="name-area form-item">
+      <label>Nome:</label>
+      <input type="text" formControlName="name" required />
+  </div>
+
+ 
+
+  <div class="buttons">
+    <button type="button" class="cancel-button" (click)="close()">Cancelar</button>
+    <button type="submit" class="save-button" [disabled]="loading">
+      <span *ngIf="loading" class="spinner"><mat-spinner></mat-spinner></span>
+      <span *ngIf="!loading">Salvar</span>
+      
+    </button>
+  </div>
+
+</form>
