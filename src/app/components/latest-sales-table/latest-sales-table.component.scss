@@ -1,0 +1,43 @@
+.table-container {
+    max-height: 285px; /* Altura máxima da tabela */
+    width: 710px;
+   /* Habilita o scroll vertical */
+    overflow-x: hidden; /* Desativa o scroll horizontal */
+    display: block;
+    align-items: center;
+    gap: 20px; /* Ajuste do gap entre os itens */
+  
+    .mat-mdc-table {
+      width: 100%;
+      border-spacing: 0 8px;
+      border-collapse: separate;
+      
+      .mat-mdc-row {
+        background: rgba(244, 245, 252, 0.94); /* Cor de fundo das linhas */
+        height: 30px;
+        width: 100%;
+        border-radius: 7px;
+        font-size: 13px;
+        font-weight: 400;
+        color: #000;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+      
+      .mat-mdc-row:hover {
+        background: rgba(64, 72, 132, 0.94); 
+        color: #FFF;
+      }
+  
+      .mat-header-row {
+        background-color: #f0f0f0; /* Cor do cabeçalho */
+      }
+
+      .selected-row {
+        background-color: #15316D; /* Cor de fundo da linha selecionada */
+        color: #FFF;
+      }
+    }
+  }
+  
+ 

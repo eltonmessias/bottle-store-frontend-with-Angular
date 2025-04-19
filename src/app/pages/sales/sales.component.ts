@@ -60,16 +60,10 @@ export class SalesComponent {
   ngOnInit(): void {
     this.loadProducts();
     this.loadUser();
-    this.getLatestSales();
-  }
-
-  private getLatestSales() {
-    this.saleService.getLatestSales(5).subscribe(data => {
-      this.latestSales = data;
-      console.log(data)
-    })
     
   }
+
+  
 
   // --- API Calls ---
   private loadProducts() {

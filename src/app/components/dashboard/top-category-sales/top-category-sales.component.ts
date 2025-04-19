@@ -30,7 +30,7 @@ export class TopCategorySalesComponent {
     options: {
       is3D: true
     },
-    width: 500,
-    height: 260
+    width: 524,
+    height: 200
   };
 }

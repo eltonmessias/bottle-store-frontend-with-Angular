@@ -1,0 +1,30 @@
+<div class="table-container">
+    <p>Latest Sales</p>
+    <table mat-table [dataSource]="latestSales" class="mat-elevation-z8">
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let sale"> {{ sale.id }} </td>
+      </ng-container>
+  
+      <!-- Total Amount Column -->
+      <ng-container matColumnDef="totalAmount">
+        <th mat-header-cell *matHeaderCellDef> Preço de Venda </th>
+        <td mat-cell *matCellDef="let sale"> {{ sale.totalAmount | currency:'MZN ' }} </td>
+      </ng-container>
+  
+      <!-- Data da Venda -->
+      <ng-container matColumnDef="saleDate">
+        <th mat-header-cell *matHeaderCellDef> Data </th>
+        <td mat-cell *matCellDef="let sale"> {{ sale.date | date:'shortDate' }} </td>
+      </ng-container>
+  
+      <!-- Cabeçalho -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  
+      <!-- Linhas de dados -->
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  
+    </table>
+  </div>
+  

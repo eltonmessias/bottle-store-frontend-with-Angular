@@ -46,7 +46,7 @@ export class MontlySalesChartComponent {
       is3D: true}
     },
     width: 650,
-    height: 260
+    height: 200
   };
 
 }
