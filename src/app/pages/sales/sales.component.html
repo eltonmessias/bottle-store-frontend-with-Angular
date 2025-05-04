@@ -47,6 +47,7 @@
                     <thead>
                         <tr>
                             <th>Produto</th>
+                            <th>Unidade</th>
                             <th>Quantidade</th>
                             <th>Preço Unitário</th>
                             <th>Subtotal</th>
@@ -56,6 +57,16 @@
                     <tbody>
                         <tr *ngFor="let item of cartItems(); let i = index">
                             <td class="product-name">{{ item.product }}</td>
+                            <td>
+                                <!-- <select [(ngModel)]="item.unit">
+                                    <option value="PACKAGE">Embalagem</option>
+                                    <option value="BOX">Caixa</option>
+                                </select> -->
+                                <select >
+                                    <option value="PACKAGE">Embalagem</option>
+                                    <option value="BOX">Caixa</option>
+                                </select>
+                            </td>
                             <td class="quantity-cell">
                                 <button class="qty-btn" (click)="decreaseQuantity(i)">-</button>
                                 <input type="number" [(ngModel)]="item.quantity" (change)="updateQuantity(i)" />

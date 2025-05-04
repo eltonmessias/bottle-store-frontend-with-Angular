@@ -1,0 +1,29 @@
+<div class="user-table">
+    <h3>Customer List</h3>
+    <button class="add-customer-btn" (click)="openCreateCustomertDialog()">Add Customer</button>
+    <table>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let u of customers">
+          <td>{{ u.firstName }}</td>
+          <td>{{ u.lastName }}</td>
+          <td>{{ u.email }}</td>
+          <td>{{ u.phone }}</td>
+          <td>
+            <!-- <button (click)="editUser(u)">Edit</button>
+            <button (click)="deleteUser(u)">Delete</button> -->
+            <button >Edit</button>
+            <button>Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>

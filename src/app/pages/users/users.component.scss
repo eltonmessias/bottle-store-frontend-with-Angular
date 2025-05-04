@@ -1,0 +1,121 @@
+.user-management-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: #f9fafb;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .user-form {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  
+    h2 {
+      text-align: center;
+      color: #1f2937;
+      margin-bottom: 1.5rem;
+    }
+  
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+  
+      label {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #374151;
+      }
+  
+      input,
+      select {
+        padding: 0.75rem;
+        border-radius: 6px;
+        border: 1px solid #d1d5db;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+  
+        &:focus {
+          outline: none;
+          border-color: #6366f1;
+        }
+      }
+    }
+  
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 1rem;
+  
+      button {
+        background-color: #4f46e5;
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s;
+  
+        &:hover {
+          background-color: #4338ca;
+        }
+  
+        &:disabled {
+          background-color: #a5b4fc;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+  
+  .user-table {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  
+    h3 {
+      margin-bottom: 1rem;
+      color: #1f2937;
+    }
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+  
+      th,
+      td {
+        padding: 0.75rem;
+        text-align: left;
+        border-bottom: 1px solid #e5e7eb;
+      }
+  
+      th {
+        background-color: #f3f4f6;
+        color: #374151;
+        font-weight: 600;
+      }
+  
+      td {
+        color: #4b5563;
+      }
+  
+      button {
+        background-color: transparent;
+        border: none;
+        color: #4f46e5;
+        font-weight: 600;
+        cursor: pointer;
+        margin-right: 0.5rem;
+  
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  

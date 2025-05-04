@@ -189,7 +189,7 @@ export class SalesComponent {
   if (this.totalPayment() >= this.totalAmount()) {
     const saleData = {
       items: this.cartItems().map(item => ({ productId: item.productId, quantity: item.quantity })),
-      payments: this.payments(),
+      paymentMethods: this.payments(),
       totalAmount: this.totalAmount(),
       totalPaid: this.totalPayment(),
       change: this.changeAmount()

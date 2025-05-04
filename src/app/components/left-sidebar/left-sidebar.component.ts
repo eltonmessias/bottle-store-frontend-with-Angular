@@ -42,9 +42,9 @@ export class LeftSidebarComponent {
       label: 'Users'
     },
     {
-      RouterLink: 'clients',
+      RouterLink: 'customers',
       icon: 'fal fa-user',
-      label: 'Clients'
+      label: 'Customers'
     }
   ]
 

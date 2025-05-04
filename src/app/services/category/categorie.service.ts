@@ -7,7 +7,7 @@ import { Category } from '../../models/category';
   providedIn: 'root'
 })
 export class CategorieService {
-  private apiUrl = 'http://localhost:8080/bigbrother/api/categories';
+  private apiUrl = 'http://localhost:8080/api/v1/bigbrother/categories';
 
   constructor(private http: HttpClient ) { }
 

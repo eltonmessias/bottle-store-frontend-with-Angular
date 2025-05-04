@@ -21,27 +21,32 @@
             <table mat-table [dataSource]="products" class="mat-elevation-z8">
           
               <!-- ID Column -->
-              <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef> ID </th>
-                <td mat-cell *matCellDef="let product" (click)="onCellClick(product)"> {{ product.id }} </td>
+              <ng-container matColumnDef="code">
+                <th mat-header-cell *matHeaderCellDef> Code </th>
+                <td mat-cell *matCellDef="let product" (click)="onCellClick(product)"> {{ product.productCode }} </td>
               </ng-container>
             
               <!-- Name Column -->
               <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef> Nome </th>
+                <th mat-header-cell *matHeaderCellDef> Name </th>
                 <td mat-cell *matCellDef="let product" (click)="onCellClick(product)"> {{ product.name }} </td>
               </ng-container>
-            
-              <!-- Price Column -->
-              <ng-container matColumnDef="sellingPrice">
-                <th mat-header-cell *matHeaderCellDef> Preço de Compra </th>
-                <td mat-cell *matCellDef="let product" (click)="onCellClick(product)"> {{ product.sellingPrice | currency:'MZN ' }} </td>
-              </ng-container>
-          
+
               <ng-container matColumnDef="purchasePrice">
-                <th mat-header-cell *matHeaderCellDef> Preço de Venda </th>
+                <th mat-header-cell *matHeaderCellDef> Cost Price </th>
                 <td mat-cell *matCellDef="let product" (click)="onCellClick(product)"> {{ product.purchasePrice | currency:'MZN ' }} </td>
               </ng-container>
+
+              <!-- Price Column -->
+              <ng-container matColumnDef="sellingPrice">
+                <th mat-header-cell *matHeaderCellDef> Salling price </th>
+                <td mat-cell *matCellDef="let product" (click)="onCellClick(product)"> {{ product.sellingPrice | currency:'MZN ' }} </td>
+              </ng-container>
+
+
+              
+            
+              
             
               <!-- Category Column -->
               <ng-container matColumnDef="category">

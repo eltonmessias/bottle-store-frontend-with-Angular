@@ -9,7 +9,7 @@ import { Sale } from '../../models/sale';
 })
 export class SaleService {
 
-  private apiUrl = 'http://localhost:8080/bigbrother/api/sales';
+  private apiUrl = 'http://localhost:8080/api/v1/bigbrother/sales';
   constructor(private http: HttpClient) { }
 
   processSale(saleData: any): Observable<any> {

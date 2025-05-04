@@ -1,0 +1,36 @@
+<h2> Customer Registration </h2>
+
+<form [formGroup]="customerForm" (ngSubmit)="save()">
+
+     <div class="name-area">
+          <div class="text-area form-item">
+              <label>First Name:</label>
+              <input type="text" formControlName="firstName" required />
+          </div>
+          <div class="text-area form-item">
+            <label>Last Name:</label>
+            <input type="text" formControlName="lastName" required />
+        </div>
+     </div>
+    
+        <div class="text-area email form-item">
+            <label>Email</label>
+            <input type="email" formControlName="name" required />
+        </div>
+    
+        <div class="text-area phone form-item">
+            <label>Phone Number</label>
+            <input type="text" formControlName="name" required />
+        </div>
+
+
+
+  <div class="buttons">
+    <button type="button" class="cancel-button" (click)="close()">Cancelar</button>
+    <button type="submit" class="save-button" [disabled]="loading">
+      <span *ngIf="loading" class="spinner"><mat-spinner></mat-spinner></span>
+      <span *ngIf="!loading">Salvar</span>
+    </button>
+  </div>
+
+</form>

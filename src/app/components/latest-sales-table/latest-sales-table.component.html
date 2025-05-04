@@ -1,15 +1,25 @@
 <div class="table-container">
-    <p>Latest Sales</p>
+    <p>Recent Sales</p>
     <table mat-table [dataSource]="latestSales" class="mat-elevation-z8">
       <!-- ID Column -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> ID </th>
-        <td mat-cell *matCellDef="let sale"> {{ sale.id }} </td>
+      <ng-container matColumnDef="code">
+        <th mat-header-cell *matHeaderCellDef> Code </th>
+        <td mat-cell *matCellDef="let sale"> {{ sale.saleCode }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let sale"> {{ sale.saleDate }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="customer">
+        <th mat-header-cell *matHeaderCellDef> Customer </th>
+        <td mat-cell *matCellDef="let sale"> {{ sale.customerName }} </td>
       </ng-container>
   
       <!-- Total Amount Column -->
       <ng-container matColumnDef="totalAmount">
-        <th mat-header-cell *matHeaderCellDef> Preço de Venda </th>
+        <th mat-header-cell *matHeaderCellDef> Amount </th>
         <td mat-cell *matCellDef="let sale"> {{ sale.totalAmount | currency:'MZN ' }} </td>
       </ng-container>
   

@@ -29,11 +29,11 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
             });
             return next(newRequest);
           }),
-          catchError(refreshError => {
-            authService.logout();
-            router.navigate(['/login']);
-            return throwError(() => refreshError);
-          })
+          // catchError(refreshError => {
+          //   authService.logout();
+          //   router.navigate(['/login']);
+          //   return throwError(() => refreshError);
+          // })
         );
       }
       return throwError(() => error);

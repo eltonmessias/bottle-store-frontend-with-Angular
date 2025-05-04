@@ -21,7 +21,7 @@ export class InventoryComponent implements OnInit{
   refreshProducts = false;
 
 
-  displayedColumns: string[] = ['id', 'name', 'sellingPrice', 'purchasePrice', 'category', 'stockQuantity'];
+  displayedColumns: string[] = ['code', 'name',  'purchasePrice', 'sellingPrice', 'category', 'stockQuantity'];
   products: Product[] = [];
   categories = [];
 

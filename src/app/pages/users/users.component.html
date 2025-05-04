@@ -1,1 +1,31 @@
-<p>users works!</p>
+<div class="user-table">
+      <h3>User List</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Role</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let u of users">
+            <td>{{ u.username }}</td>
+            <td>{{ u.fullName }}</td>
+            <td>{{ u.email }}</td>
+            <td>{{ u.phone }}</td>
+            <td>{{ u.role }}</td>
+            <td>
+              <!-- <button (click)="editUser(u)">Edit</button>
+              <button (click)="deleteUser(u)">Delete</button> -->
+              <button >Edit</button>
+              <button>Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+ </div>
+  

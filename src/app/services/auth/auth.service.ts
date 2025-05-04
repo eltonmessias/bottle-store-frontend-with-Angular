@@ -7,7 +7,7 @@ import { catchError, map, Observable, tap, throwError } from 'rxjs'; // Adicione
   providedIn: 'root',
 })
 export class AuthService {
-  private url = 'http://localhost:8080/bigbrother/api/auth';
+  private url = 'http://localhost:8080/api/v1/bigbrother/auth';
 
   constructor(private http: HttpClient, private router: Router) {}
 

@@ -17,7 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class LatestSalesTableComponent {
 
-  displayedColumns: string[] = ['id', 'totalAmount'];
+  displayedColumns: string[] = ['code','date', "customer",'totalAmount'];
 
   latestSales: Sale[] = []
   sales: Sale[] = [];

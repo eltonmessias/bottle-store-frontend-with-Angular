@@ -1,71 +1,64 @@
+@use "../../../styles" as *;
 *{
     font-family: 'Montserrat', sans-serif;
 }
 
-.section {
+
+    
+
+
+.container{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    align-self: center;
+    margin-top: 2rem;
+    padding-top: 5rem;
+    gap: 5rem;
     align-items: center;
-    background: #dddddd;
+    background:$primary-color;
+    height: 80vh;
+    width: 721px;
+    border-radius: 21px;
+    
 
-    .left{
-        background:#07644C;
-        height: 500px;
-        width: 721px;
-        border-radius: 21px;
+        h1 {
+            color: #fff;
+            font-size: 32px;
+            font-weight: 500;
+        }
 
-        div {
+        form {
             display: flex;
             flex-direction: column;
             gap: 50px;
-            justify-content: center;
             align-items: center;
+        }
 
-            h1 {
-                color: #fff;
-                font-size: 32px;
-                font-weight: 500;
-            }
+        input {
+            background: white;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            width: 298px;
+            height: 38px;
+            padding-left: 1rem;
+            font-size: 12pt;
+        }
 
-            form {
-                display: flex;
-                flex-direction: column;
-                gap: 50px;
-                align-items: center;
-            }
+        button {
+            width: 145px;
+            height: 38px;
+            background: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15pt;
+        }
 
-            input {
-                background: white;
-                outline: none;
-                border: none;
-                border-radius: 5px;
-                width: 298px;
-                height: 38px;
-                padding-left: 3px;
-            }
-
-            button {
-                width: 145px;
-                height: 38px;
-                background: white;
-                border-radius: 5px;
-                cursor: pointer;
-            }
-
-            button:hover {
-                background: #dddddd;
-            }
-            
+        button:hover {
+            background: #dddddd;
         }
         
     }
+    
 
-    .right {
-        width: 500px;
-        span {
-            color: #07644C;
-            font-size: 64px;
-            font-weight: 800;
-        }
-    }
-}
